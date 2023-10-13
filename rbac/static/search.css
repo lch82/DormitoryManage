@@ -1,0 +1,154 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: #fff;
+}
+nav{
+    width: 100%;
+    height: 60px;
+    /* background: #4a4a4a; */
+    background: linear-gradient(120deg,#3498db,#8e44ad);
+
+}
+/* caption{
+    font-size: 30px;
+    font-weight: 20px;
+    padding-bottom: 10px;
+    font-family: sans-serif;
+} */
+table{
+    font-size: 18px;
+    text-align: center;
+    border: 3px solid;
+    border-color: #3498db;
+    padding: 5px;
+}
+
+tr{
+    height: 50px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid;
+    border-color: #8e44ad;
+}
+
+.th1{
+    width: 300px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid;
+    border-color: #8e44ad;
+}
+.th2{
+    width: 200px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid;
+    border-color: #8e44ad;
+}
+/* th{
+    width: 250px;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid;
+    border-color: #8e44ad;
+} */
+/* .tablestyle{
+    padding-top: 10px;
+    padding-left: 100px;
+    /* position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%); 
+    
+    
+} */
+.title,#text1,#text2{
+    line-height: 60px;
+    float: left;
+    display: inline-block;
+    color: #fff;
+    width: 160px;
+    text-align: center;
+}
+#text3{
+    line-height: 60px;
+    float: left;
+    display: inline-block;
+    width: 200px;
+    color: #fff;
+    text-align: center;
+}
+.title{
+    color: white;
+    width: 200px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+#list1,#list2{
+    list-style: none;
+    background: white;
+    text-align: center;
+    width: 120px;
+    line-height: 60px;
+    border-radius: 5px;
+    z-index: -1;
+    position: absolute;
+    left: 420px;
+    top: -120px;
+}
+#list2{
+    left: 580px;
+}
+#text1:hover,#text2:hover{
+    color: white;
+    cursor: pointer;
+}
+#text1:hover ~ #list1,#text2:hover ~ #list2{
+    top: 60px;
+    transition-duration: 0.5s;
+}
+#list1:hover,#list2:hover{
+    color: white;
+    top: 60px;
+    cursor: pointer;
+}
+.content1:hover,.content2:hover{
+    background: linear-gradient(120deg,#3498db,#8e44ad);
+    border-radius: 5px;
+    cursor: pointer;
+}
+b{
+    border-style: solid;
+    border-width: 5px;
+    border-color: white transparent transparent transparent;
+    position: relative;
+    top: 13px;
+    left: 2px;
+}
+a{
+    line-height: 60px;
+    float: right;
+    display: inline-block;
+    color: #fff;
+    width: 160px;
+    text-align: center;
+    text-decoration: none; /*没有下划线*/
+}
+.container{
+    padding-top:10px;
+    padding-left:600px;
+}
+
+button{
+    background: linear-gradient(120deg,#3498db,#8e44ad);
+    font-size: 18px;
+    text-align: center;
+    float: right;
+    margin-top: 20px;
+    margin-right: 100px;
+    width: 160px;
+}
+  

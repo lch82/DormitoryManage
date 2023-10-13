@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>辅导员卫生情况统计主页</title>
+        <link rel="stylesheet" type="text/css" href="/static/search.css">
+        <script type="text/javascript" src="/static/echarts.min.js"></script>
+    </head>
+
+    <body>
+        <nav>
+            <h1 class="title">寝室卫生管理系统</h1>
+            <ul>
+                <li id="text3">您好，{{request.session.username}}</li>
+                <li id="text1"><a href="{% url 'TeacherSearch' %}">卫生情况查看</a></li>
+                <li id="text2"><a href="{% url 'TeacherStatistic' %}">卫生情况统计</a></li>
+                
+                
+                <a href="{% url 'logout' %}">退出</a>
+            </ul>
+        </nav> 
+        <div style=" padding-top: 10px;padding-left: 250px;">
+            <h2 style="padding-bottom: 10px;padding-left:400px;">各档卫生情况的寝室</h2>
+            <table>
+                <tr>
+                    <th class="th2">优</th>
+                    <th class="th2">良</th>
+                    <th class="th2">中</th>
+                    <th class="th2">及格</th>
+                    <th class="th2">不及格</th>
+                </tr>
+                
+                <tr>
+                    
+                    <th class="th2">{%for i in d1%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d2%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d3%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d4%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d5%}{{i}}<br>{% endfor %}</th>
+                </tr>
+                
+            </table>
+            
+        </div>
+        <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+        <div id="main" style="width: 600px;height:400px;padding-top: 30px;padding-left: 450px;"></div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '卫生情况统计柱状图'
+                },
+                tooltip: {},
+                legend: {
+                    data:['数量']
+                },
+                xAxis: {
+                    data: ["优","良","中","及格","不及格"]
+                },
+                yAxis: {},
+                series: [{
+                    name: '数量',
+                    type: 'bar',
+                    data: [
+                        {value:{{d_num.d1_num}},name:'优'},
+                        {value:{{d_num.d2_num}},name:'良'},
+                        {value:{{d_num.d3_num}},name:'中'},
+                        {value:{{d_num.d4_num}},name:'及格'},
+                        {value:{{d_num.d5_num}},name:'不及格'},
+                    ]
+                }]
+            };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </body>
+
+</html>

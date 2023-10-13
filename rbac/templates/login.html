@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>登录界面</title>
+        <link rel="stylesheet" href="../static/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js " charset="utf-8"></script>
+    </head>
+
+    <body>
+        <form action="{% url 'login' %}" method="POST" class="login-form" autocomplete="off">{% csrf_token %}
+            <!-- {% csrf_token %} -->
+            <h1>LOGIN</h1>
+
+            <div class="txtb">
+                <input type="text" id="id_sid" name="user">
+                <span data-placeholder="用户名"></span>
+            </div>
+
+            <div class="txtb">
+                <input type="password" id="id_password" name="pwd" >
+                <span data-placeholder="密码"></span>
+            </div>
+                    
+            <input type="submit" class="logbtn" value="登录">
+
+            
+            
+        </form>
+
+        <script type="text/javascript">
+            $(".txtb input").on("focus",function(){
+                $(this).addClass("focus");
+            })
+        </script>
+
+        <script type="text/javascript">
+            $(".txtb input").on("blur",function(){
+                if($(this).val() == "")
+                $(this).removeClass("focus");
+            })
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>辅导员卫生情况查看主页</title>
+        <link rel="stylesheet" type="text/css" href="/static/search.css">
+    </head>
+
+    <body>
+        <nav>
+            <h1 class="title">寝室卫生管理系统</h1>
+            <ul>
+                <li id="text3">您好，{{request.session.username}}</li>
+                <li id="text1"><a href="{% url 'TeacherSearch' %}">卫生情况查看</a></li>
+                <li id="text2"><a href="{% url 'TeacherStatistic' %}">卫生情况统计</a></li>
+                <!-- <ul id="list1">
+                    <li class="content1">text11</li>
+                    <li class="content1">text11</li>
+                    <li class="content1">text11</li>
+                </ul>
+
+                <ul id="list2">
+                    <li class="content2">text21</li>
+                    <li class="content2">text21</li>
+                    <li class="content2">text21</li>
+                </ul> -->
+                
+                <a href="{% url 'logout' %}">退出</a>
+            </ul>
+        </nav> 
+        <div style=" padding-top: 10px;padding-left: 250px;">
+            <h2 style="padding-bottom: 10px;padding-left:400px;">所管理年级的卫生情况</h2>
+            <table >
+                <tr>
+                    <th class="th2">所属年级</th>
+                    <th class="th2">宿舍号</th>
+                    <th class="th2">所在楼号</th>
+                    <th class="th2">人数</th>
+                    <th class="th2">卫生情况</th>
+                </tr>
+                {%for i in dorm%}
+                <tr>
+                    <th class="th2">{{i.sclass}}</th>
+                    <th class="th2">{{i.dno}}</th>
+                    <th class="th2">{{i.num}}</th>
+                    <th class="th2">{{i.people}}</th>
+                    <th class="th2">{{i.content}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>学工领导卫生情况查看主页</title>
+        <link rel="stylesheet" type="text/css" href="/static/search.css">
+    </head>
+
+    <body>
+        <nav>
+            <h1 class="title">寝室卫生管理系统</h1>
+            <ul>
+                <li id="text3">您好，{{request.session.username}}</li>
+                <li id="text1"><a href="{% url 'LeaderShow' %}">卫生情况查看</a></li>
+                <li id="text2"><a href="{% url 'LeaderShow1' %}">卫生情况统计</a></li>
+                
+                
+                <a href="{% url 'logout' %}">退出</a>
+            </ul>
+        </nav> 
+        <div class="container">
+            <form action="{% url 'LeaderSearch' %}" method="get">
+                <select name="depart" id="depart" onchange="document.getElementById('input').value=this.value">
+                    <option value="all">全部</option>
+                    {%for i in depart%}
+                    <option value="{{i.dept_name}}">{{i.dept_name}}</option>
+                    {% endfor %}
+                </select>
+
+                <input type="text" id="id_sclass" name="sclass" >
+                <span data-placeholder="年级"></span>
+
+                <input type="submit" name="" value="查看">
+            </form>
+        </div>
+
+        <div style="padding-top: 10px;padding-left: 100px;">
+            <h3>学院：{{deptname}}&nbsp;&nbsp;&nbsp;&nbsp;年级：{{stu_sclass}}</h3>
+            <table>
+                <tr>
+                    <th class="th1">所属学院</th>
+                    <th class="th2">所属年级</th>
+                    <th class="th2">宿舍号</th>
+                    <th class="th2">所在楼号</th>
+                    <th class="th2">人数</th>
+                    <th class="th2">卫生情况</th>
+                </tr>
+                {%for i in hebin%}
+                <tr>
+                    <th class="th1">{{i.0}}</th>
+                    <th class="th2">{{i.1.sclass}}</th>
+                    <th class="th2">{{i.1.dno}}</th>
+                    <th class="th2">{{i.1.num}}</th>
+                    <th class="th2">{{i.1.people}}</th>
+                    <th class="th2">{{i.1.content}}</th>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+
+</html>

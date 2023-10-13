@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>学工领导主页</title>
+        <link rel="stylesheet" type="text/css" href="../static/search.css">
+    </head>
+
+    <body>
+        <nav>
+            <h1 class="title">寝室卫生管理系统</h1>
+            <ul>
+                <li id="text3">您好，{{request.session.username}}</li>
+                <li id="text1"><a href="{% url 'LeaderShow' %}">卫生情况查看</a></li>
+                <li id="text2"><a href="{% url 'LeaderShow1' %}">卫生情况统计</a></li>
+                
+                <a href="{% url 'logout' %}">退出</a>
+            </ul>
+        </nav> 
+    </body>
+
+</html>

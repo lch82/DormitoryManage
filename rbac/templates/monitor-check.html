@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>学生干部卫生检查管理主页</title>
+        <link rel="stylesheet" type="text/css" href="/static/check.css">
+    </head>
+
+    <body>
+        <nav>
+            <h1 class="title">寝室卫生管理系统</h1>
+            <ul>
+                <li id="text3">您好，{{request.session.username}}</li>
+                <li id="text1"><a href="{% url 'MonitorCheck' %}">卫生检查管理</a></li>
+                <li id="text2"><a href="{% url 'MonitorInform' %}">任务通知提醒</a></li>
+                <!-- <ul id="list1">
+                    <li class="content1">检查结果录入</li>
+                    <li class="content1">text11</li>
+                    <li class="content1">整改方案录入</li>
+
+                </ul>
+
+                <ul id="list2">
+                    <li class="content2">text21</li>
+                    <li class="content2">text21</li>
+                    <li class="content2">text21</li>
+                </ul> -->
+                
+
+                <a href="{% url 'logout' %}">退出</a>
+            </ul>
+        </nav> 
+        <div class="tablestyle">
+            
+            <table>
+                <caption>所检查的卫生情况<br>学院：{{mm_name}}&nbsp;&nbsp;&nbsp;&nbsp;宿舍楼号：{{mm_num}}</caption>
+                
+                <tr>
+                    <th class="th2">宿舍号</th>
+                    <th class="th2">所属年级</th>
+                    <th class="th1">检查日期</th>
+                    <th class="th2">卫生情况</th>
+                    <th class="th3">整改方案</th>
+                    <th class="th2">操作</th>
+                </tr>
+                {%for i in dorm%}
+                <tr>
+                    <th class="th2">{{i.dno}}</th>
+                    <th class="th2">{{i.sclass}}</th>
+                    <th class="th1">{{i.year}}-{{i.month}}-{{i.day}}</th>
+                    <th class="th2">{{i.content}}</th>
+                    <th class="th3">{{i.text}}</th>
+                    <th class="th2">
+                        <a href="{% url 'EditInfoShow' %}?dno={{i.dno}}&num={{i.num}}">
+                        <button class="btn btn-primary" id="#">录入结果</button>
+                    </a>
+                    </th>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+
+</html>

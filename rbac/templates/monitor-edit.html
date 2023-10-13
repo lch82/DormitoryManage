@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>学生干部检查结果录入主页</title>
+        <link rel="stylesheet" type="text/css" href="/static/check.css">
+    </head>
+
+    <body>
+        <nav>
+            <h1 class="title">寝室卫生管理系统</h1>
+            <ul>
+                <li id="text3">您好，{{request.session.username}}</li>
+                <li id="text1"><a href="{% url 'MonitorCheck' %}">卫生检查管理</a></li>
+                <li id="text2"><a href="{% url 'MonitorInform' %}">任务通知提醒</a></li>
+                <!-- <ul id="list1">
+                    <li class="content1">检查结果录入</li>
+                    <li class="content1">text11</li>
+                    <li class="content1">整改方案录入</li>
+
+                </ul>
+
+                <ul id="list2">
+                    <li class="content2">text21</li>
+                    <li class="content2">text21</li>
+                    <li class="content2">text21</li>
+                </ul> -->
+                
+
+                <a href="{% url 'logout' %}">退出</a>
+            </ul>
+        </nav> 
+        
+        <div class="tablestyle">
+            <form action="{% url 'MonitorEdit' %}?dno={{dno}}&num={{num}}" method="POST" autocomplete="off">{% csrf_token %}
+            <table>
+                <caption>请录入检查结果</caption>
+                <tr>
+                    <th class="th2">宿舍号</th>
+                    <th class="th4">{{dorm.dno}}</th>
+                </tr>
+
+                <tr>
+                    <th class="th2">所属年级</th>
+                    <th class="th4">{{dorm.sclass}}</th>
+                </tr>
+
+                <tr>
+                    <th class="th2">检查日期</th>
+                    <th class="th4"><input type="text" name="year" placeholder="{{ dorm.year }}" style="width:60px;text-align: center;font-size: 18px;color: rgb(0, 0, 0);">-<input type="text" name="month" placeholder="{{ dorm.month }}" style="width:30px;text-align: center;font-size: 18px;color: rgb(0, 0, 0);">-<input type="text" name="day" placeholder="{{ dorm.day }}" style="width:30px;text-align: center;font-size: 18px;color: rgb(0, 0, 0);"></th>
+                </tr>
+                    
+                <tr>
+                    <th class="th2">卫生情况</th>
+                    <th class="th4"><input type="text" name="content" placeholder="{{ dorm.content }}" style="text-align: center;font-size: 18px;color: rgb(0, 0, 0);"></th>
+                </tr>
+
+                <tr>
+                    <th class="th2">整改方案</th>
+                    <th class="th4"><input type="text" name="text" placeholder="{{ dorm.text }}" style="width:480px;height:38px;text-align: center;font-size: 18px;color: rgb(0, 0, 0);"></th>
+                </tr>
+
+                <tr>
+                    <th class="th2">操作</th>
+                    <th class="th4">    
+                    <input type="submit" value="提交结果" class="btn btn-primary">
+                    </th>
+                </tr>
+
+            </table>
+            </form>
+        </div>
+        
+    </body>
+
+</html>

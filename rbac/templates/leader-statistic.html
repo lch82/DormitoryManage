@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>学工领导卫生情况统计主页</title>
+        <link rel="stylesheet" type="text/css" href="/static/search.css">
+    </head>
+
+    <body>
+        <nav>
+            <h1 class="title">寝室卫生管理系统</h1>
+            <ul>
+                <li id="text3">您好，{{request.session.username}}</li>
+                <li id="text1"><a href="{% url 'LeaderShow' %}">卫生情况查看</a></li>
+                <li id="text2"><a href="{% url 'LeaderShow1' %}">卫生情况统计</a></li>
+                
+                
+                <a href="{% url 'logout' %}">退出</a>
+            </ul>
+        </nav> 
+        <div class="container">
+            <form action="{% url 'LeaderStatistic' %}" method="get">
+                <select name="depart" id="depart" onchange="document.getElementById('input').value=this.value">
+                    <option value="all">全部</option>
+                    {%for i in depart%}
+                    <option value="{{i.dept_name}}">{{i.dept_name}}</option>
+                    {% endfor %}
+                </select>
+
+                <input type="text" id="id_sclass" name="sclass" >
+                <span data-placeholder="年级"></span>
+
+                <input type="submit" name="" value="统计">
+            </form>
+        </div>
+
+        
+        <div style=" padding-top: 10px;padding-left: 250px;">
+            <h2 style="padding-bottom: 10px;padding-left:400px;">各档卫生情况的寝室</h2>
+            <h3>学院：{{deptname}}&nbsp;&nbsp;&nbsp;&nbsp;年级：{{stu_sclass}}</h3>
+            <table>
+                <tr>
+                    <th class="th2">优</th>
+                    <th class="th2">良</th>
+                    <th class="th2">中</th>
+                    <th class="th2">及格</th>
+                    <th class="th2">不及格</th>
+                </tr>
+                
+                <tr>
+                    
+                    <th class="th2">{%for i in d1%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d2%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d3%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d4%}{{i}}<br>{% endfor %}</th>
+                    <th class="th2">{%for i in d5%}{{i}}<br>{% endfor %}</th>
+                </tr>
+                
+            </table>
+        </div>
+        <div>
+            <button><a href="{% url 'LeaderStatisticInfo' %}">统计图查看</button>
+        </div>
+        
+    </body>
+
+</html>
